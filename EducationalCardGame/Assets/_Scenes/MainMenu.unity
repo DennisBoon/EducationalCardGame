@@ -1398,7 +1398,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 300}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 682, y: 303}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &630017359
 MonoBehaviour:
@@ -1429,10 +1429,10 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Oculus UI Test
+  m_Text: Educational Card Game
 --- !u!222 &630017360
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2016,7 +2016,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter room size...
+  m_Text: Static Room Size (4)
 --- !u!222 &883878726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3807,7 +3807,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter room name...
+  m_Text: Random Room Name
 --- !u!222 &1790494578
 CanvasRenderer:
   m_ObjectHideFlags: 0
