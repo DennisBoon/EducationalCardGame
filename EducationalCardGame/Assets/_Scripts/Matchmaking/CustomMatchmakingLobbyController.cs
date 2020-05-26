@@ -3,7 +3,6 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
@@ -14,7 +13,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject mainPanel;
     [SerializeField]
-    private TMP_InputField playerNameInput;
+    private InputField playerNameInput;
 
     private string roomName;
     private int roomSize;
@@ -106,14 +105,14 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         }
     }
 
-    public void OnRoomNameChanged(string nameIn)
+    public void OnRoomNameChanged()
     {
-        roomName = nameIn;
+        roomName = "Room " + Random.Range(0,100);
     }
 
-    public void OnRoomSizeChanged(string sizeIn)
+    public void OnRoomSizeChanged()
     {
-        roomSize = int.Parse(sizeIn);
+        roomSize = 4;
     }
 
     public void CreateRoom()

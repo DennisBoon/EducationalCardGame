@@ -6,9 +6,9 @@ using TMPro;
 public class RoomButton : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text nameText;
+    private Text nameText;
     [SerializeField]
-    private TMP_Text sizeText;
+    private Text sizeText;
 
     private string roomName;
     private int roomSize;

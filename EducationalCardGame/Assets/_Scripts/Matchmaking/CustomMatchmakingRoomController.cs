@@ -3,7 +3,6 @@ using Photon.Realtime;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
 {
@@ -24,7 +23,7 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
     private GameObject playerListingPrefab;
 
     [SerializeField]
-    private TMP_Text roomNameDisplay;
+    private Text roomNameDisplay;
 
     void ClearPlayerListings()
     {
@@ -39,7 +38,7 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
         foreach (Player player in PhotonNetwork.PlayerList)
         {
             GameObject tempListing = Instantiate(playerListingPrefab, playersContainer);
-            TMP_Text tempText = tempListing.transform.GetChild(0).GetComponent<TMP_Text>();
+            Text tempText = tempListing.transform.GetChild(0).GetComponent<Text>();
             tempText.text = player.NickName;
         }
     }
