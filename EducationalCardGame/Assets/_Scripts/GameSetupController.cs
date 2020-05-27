@@ -7,6 +7,18 @@ using UnityEngine;
 public class GameSetupController : MonoBehaviour
 {
     // This script will be added to any multiplayer scene
+    public static GameSetupController GS;
+
+    public Transform[] spawnPoints;
+
+    private void OnEnable()
+    {
+        if (GameSetupController.GS == null)
+        {
+            GameSetupController.GS = this;
+        }
+    }
+
     private void Start()
     {
         CreatePlayer(); // Create a networked player object for each player that's in the multiplayerscene.
