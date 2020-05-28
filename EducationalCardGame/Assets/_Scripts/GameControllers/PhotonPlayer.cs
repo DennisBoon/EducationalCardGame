@@ -7,18 +7,26 @@ using UnityEngine;
 public class PhotonPlayer : MonoBehaviour
 {
     private PhotonView PV;
-    public GameObject myAvatar;
+    [SerializeField]
+    private GameObject[] eyeAnchors;
 
     // Start is called before the first frame update
-    void Start()
+    public void OnEnable()
     {
         PV = GetComponent<PhotonView>();
-        int spawnPicker = Random.Range(0, GameSetupController.GS.spawnPoints.Length);
+
         if (PV.IsMine)
         {
-            myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), 
-                GameSetupController.GS.spawnPoints[spawnPicker].position,
-                GameSetupController.GS.spawnPoints[spawnPicker].rotation, 0);
+            Debug.Log("THIS IS MY PLAYER");
+        }
+        else
+        {
+            Debug.Log("THIS IS NOT MY PLAYER");
+            foreach (GameObject obj in eyeAnchors)
+            {
+                Destroy(obj);
+            }
+            Debug.Log("DESTROYED TRACKING OF OTHER PLAYER");
         }
     }
 }

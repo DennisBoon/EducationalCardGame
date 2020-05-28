@@ -7,17 +7,7 @@ using UnityEngine;
 public class GameSetupController : MonoBehaviour
 {
     // This script will be added to any multiplayer scene
-    public static GameSetupController GS;
-
     public Transform[] spawnPoints;
-
-    private void OnEnable()
-    {
-        if (GameSetupController.GS == null)
-        {
-            GameSetupController.GS = this;
-        }
-    }
 
     private void Start()
     {
@@ -27,8 +17,10 @@ public class GameSetupController : MonoBehaviour
 
     private void CreatePlayer()
     {
+        int spawnPicker = Random.Range(0, spawnPoints.Length);
         Debug.Log("CREATING PLAYER");
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonPlayer"), Vector3.zero, Quaternion.identity);
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonPlayer"), spawnPoints[spawnPicker].position, 
+            spawnPoints[spawnPicker].rotation, 0);
     }
 
     private void CreateEnvironment()
