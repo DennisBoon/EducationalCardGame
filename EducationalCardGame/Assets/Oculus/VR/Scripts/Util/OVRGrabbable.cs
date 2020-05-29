@@ -39,7 +39,7 @@ public class OVRGrabbable : MonoBehaviour
 
     // Added to be able to set a grabbed object back to it's start position and rotation when dropped.
     [SerializeField]
-    [Tooltip("Set to true to reset objects transform when dropped")]
+    [Tooltip("Set to true to reset object transform when dropped")]
     private bool resetTransform;
 
     private Vector3 startPosition;
