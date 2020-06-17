@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a1c4a168dabe140823911114058459, type: 3}
+  m_Name: New Narrative
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGuid: a595a03e-167b-4d13-ade0-bcdde0f3b20b
+    PortName: Next
+    TargetNodeGuid: 497e1076-a8e0-4502-a026-9ef326b3da81
+  - BaseNodeGuid: 497e1076-a8e0-4502-a026-9ef326b3da81
+    PortName: Kill
+    TargetNodeGuid: 5838b278-e03b-44c0-9464-bc93be8cf3b4
+  - BaseNodeGuid: 497e1076-a8e0-4502-a026-9ef326b3da81
+    PortName: Don't kill
+    TargetNodeGuid: 1538dd31-8efd-4e91-8d0e-44d7bd727529
+  DilemmaNodeData:
+  - Guid: 5838b278-e03b-44c0-9464-bc93be8cf3b4
+    DilemmaText: Dilemma Node
+    Position: {x: 587, y: 81}
+  - Guid: 1538dd31-8efd-4e91-8d0e-44d7bd727529
+    DilemmaText: Dilemma Node
+    Position: {x: 628, y: 369}
+  - Guid: 497e1076-a8e0-4502-a026-9ef326b3da81
+    DilemmaText: Dilemma Node
+    Position: {x: 291, y: 198}
