@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartPosition : MonoBehaviour
+public class StartSetup : MonoBehaviour
 {
-    public List<Transform> spawnPoints = new List<Transform>();
+    [SerializeField]
+    private List<Transform> spawnPoints = new List<Transform>();
+    [SerializeField]
+    private List<string> playerRoles = new List<string>();
 
     // Start is called before the first frame update
     void Start()

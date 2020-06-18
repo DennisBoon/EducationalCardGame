@@ -25,9 +25,22 @@ public class GraphSaveUtility
 
     public void SaveGraph(string fileName)
     {
-        if (!Edges.Any()) return; // If there are no edges (no connection) then return
-
         var dilemmaContainer = ScriptableObject.CreateInstance<DilemmaContainer>();
+        if (!SaveNodes(dilemmaContainer)) return;
+        SaveExposedProperties(dilemmaContainer);
+        // Auto creates resources / graphs folder if it doesn't exist
+        if (!AssetDatabase.IsValidFolder(path: "Assets/Resources"))
+            AssetDatabase.CreateFolder(parentFolder: "Assets", newFolderName: "Resources");
+        if (!AssetDatabase.IsValidFolder(path: "Assets/Resources/Graphs"))
+            AssetDatabase.CreateFolder(parentFolder: "Assets/Resources", newFolderName: "Graphs");
+
+        AssetDatabase.CreateAsset(dilemmaContainer, path: $"Assets/Resources/Graphs/{fileName}.asset");
+        AssetDatabase.SaveAssets();
+    }
+
+    private bool SaveNodes(DilemmaContainer dilemmaContainer)
+    {
+        if (!Edges.Any()) return false; // If there are no edges (no connection) then return
 
         var connectedPorts = Edges.Where(x => x.input.node != null).ToArray();
         for (var i = 0; i < connectedPorts.Length; i++)
@@ -43,7 +56,7 @@ public class GraphSaveUtility
             });
         }
 
-        foreach (var dilemmaNode in Nodes.Where(node=>!node.EntryPoint))
+        foreach (var dilemmaNode in Nodes.Where(node => !node.EntryPoint))
         {
             dilemmaContainer.DilemmaNodeData.Add(item: new DilemmaNodeData
             {
@@ -53,14 +66,12 @@ public class GraphSaveUtility
             });
         }
 
-        // Auto creates resources / graphs folder if it doesn't exist
-        if (!AssetDatabase.IsValidFolder(path: "Assets/Resources"))
-            AssetDatabase.CreateFolder(parentFolder: "Assets", newFolderName: "Resources");
-        if (!AssetDatabase.IsValidFolder(path: "Assets/Resources/Graphs"))
-            AssetDatabase.CreateFolder(parentFolder: "Assets/Resources", newFolderName: "Graphs");
+        return true;
+    }
 
-        AssetDatabase.CreateAsset(dilemmaContainer, path: $"Assets/Resources/Graphs/{fileName}.asset");
-        AssetDatabase.SaveAssets();
+    private void SaveExposedProperties(DilemmaContainer dilemmaContainer)
+    {
+        dilemmaContainer.ExposedProperties.AddRange(_targetGraphView.ExposedProperties);
     }
 
     public void LoadGraph(string fileName)
@@ -75,6 +86,18 @@ public class GraphSaveUtility
         ClearGraph();
         CreateNodes();
         ConnectNodes();
+        CreateExposedProperties();
+    }
+
+    private void CreateExposedProperties()
+    {
+        // Clear existing properties on hot-reload
+        _targetGraphView.ClearBlackBoardAndExposedProperties();
+        // Add properties from data.
+        foreach (var exposedProperty in _containerCache.ExposedProperties)
+        {
+            _targetGraphView.AddPropertyToBlackBoard(exposedProperty);
+        }
     }
 
     private void ConnectNodes()
@@ -113,7 +136,7 @@ public class GraphSaveUtility
     {
         foreach (var nodeData in _containerCache.DilemmaNodeData)
         {
-            var tempNode = _targetGraphView.CreateDilemmaNode(nodeData.DilemmaText);
+            var tempNode = _targetGraphView.CreateDilemmaNode(nodeData.DilemmaText, Vector2.zero);
             tempNode.GUID = nodeData.Guid;
             _targetGraphView.AddElement(tempNode);
 

@@ -5,12 +5,17 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using System;
 using System.Linq;
+using UnityEditor;
 
 public class DilemmaGraphView : GraphView
 {
     public readonly Vector2 defaultNodeSize = new Vector2(x:150, y:200);
 
-    public DilemmaGraphView()
+    public Blackboard Blackboard;
+    public List<ExposedProperty> ExposedProperties = new List<ExposedProperty>();
+    private NodeSearchWindow _searchWindow;
+
+    public DilemmaGraphView(EditorWindow editorWindow)
     {
         styleSheets.Add(styleSheet: Resources.Load<StyleSheet>(path: "DilemmaGraph"));
         SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
@@ -24,6 +29,15 @@ public class DilemmaGraphView : GraphView
         grid.StretchToParentSize();
 
         AddElement(GenerateEntryPointNode());
+        AddSearchWindow(editorWindow);
+    }
+
+    private void AddSearchWindow(EditorWindow editorWindow)
+    {
+        _searchWindow = ScriptableObject.CreateInstance<NodeSearchWindow>();
+        _searchWindow.Init(editorWindow, this);
+        nodeCreationRequest = context =>
+            SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), _searchWindow);
     }
 
     public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
@@ -68,12 +82,12 @@ public class DilemmaGraphView : GraphView
         return node;
     }
 
-    public void CreateNode(string nodeName)
+    public void CreateNode(string nodeName, Vector2 position)
     {
-        AddElement(CreateDilemmaNode(nodeName));
+        AddElement(CreateDilemmaNode(nodeName, position));
     }
 
-    public DilemmaNode CreateDilemmaNode(string nodeName)
+    public DilemmaNode CreateDilemmaNode(string nodeName, Vector2 position)
     {
         var dilemmaNode = new DilemmaNode
         {
@@ -103,7 +117,7 @@ public class DilemmaGraphView : GraphView
 
         dilemmaNode.RefreshExpandedState();
         dilemmaNode.RefreshPorts();
-        dilemmaNode.SetPosition(new Rect(position: Vector2.zero, defaultNodeSize));
+        dilemmaNode.SetPosition(new Rect(position: position, defaultNodeSize));
 
         return dilemmaNode;
     }
@@ -153,5 +167,42 @@ public class DilemmaGraphView : GraphView
         dilemmaNode.outputContainer.Remove(generatedPort);
         dilemmaNode.RefreshPorts();
         dilemmaNode.RefreshExpandedState();
+    }
+
+    public void ClearBlackBoardAndExposedProperties()
+    {
+        ExposedProperties.Clear();
+        Blackboard.Clear();
+    }
+
+    public void AddPropertyToBlackBoard(ExposedProperty exposedProperty)
+    {
+        var localPropertyName = exposedProperty.PropertyName;
+        var localPropertyValue = exposedProperty.PropertyValue;
+        while (ExposedProperties.Any(x => x.PropertyName == localPropertyName))
+            localPropertyName = $"{localPropertyName}(1)";
+
+        var property = new ExposedProperty();
+        property.PropertyName = localPropertyName;
+        property.PropertyValue = localPropertyValue;
+        ExposedProperties.Add(property);
+
+        var container = new VisualElement();
+        var blackboardField = new BlackboardField { text = property.PropertyName, typeText = "string property" };
+        container.Add(blackboardField);
+
+        var propertyValueTextField = new TextField(label: "Value:")
+        {
+            value = localPropertyValue
+        };
+        propertyValueTextField.RegisterCallback((EventCallback<ChangeEvent<string>>)(evt =>
+        {
+            var changingPropertyIndex = ExposedProperties.FindIndex(match: x => x.PropertyName == property.PropertyName);
+            ExposedProperties[changingPropertyIndex].PropertyValue = evt.newValue;
+        }));
+        var blackBoardValueRow = new BlackboardRow(item: blackboardField, propertyView: propertyValueTextField);
+        container.Add(blackBoardValueRow);
+
+        Blackboard.Add(container);
     }
 }

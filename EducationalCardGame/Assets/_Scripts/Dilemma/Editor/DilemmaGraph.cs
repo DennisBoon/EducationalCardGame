@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
@@ -23,11 +24,36 @@ public class DilemmaGraph : EditorWindow
         ConstructGraphView();
         GenerateToolbar();
         GenerateMiniMap();
+        GenerateBlackBoard();
+    }
+
+    private void GenerateBlackBoard()
+    {
+        var blackboard = new Blackboard(_graphView);
+        blackboard.Add(child: new BlackboardSection { title = "Exposed Properties" });
+        blackboard.addItemRequested = _blackboard => { _graphView.AddPropertyToBlackBoard(new ExposedProperty()); };
+        blackboard.editTextRequested = (blackboard1, element, newValue) =>
+        {
+            var oldPropertyName = ((BlackboardField)element).text;
+            if (_graphView.ExposedProperties.Any(XboxBuildSubtarget => XboxBuildSubtarget.PropertyName == newValue))
+            {
+                EditorUtility.DisplayDialog(title: "Error", message: "This property name already exists, please choose another one.",
+                    ok: "OK");
+                return;
+            }
+
+            var propertyIndex = _graphView.ExposedProperties.FindIndex(match: x => x.PropertyName == oldPropertyName);
+            _graphView.ExposedProperties[propertyIndex].PropertyName = newValue;
+            ((BlackboardField)element).text = newValue;
+        };
+        blackboard.SetPosition(newPos: new Rect(x: 10, y: 30, width: 200, height: 300));
+        _graphView.Add(blackboard);
+        _graphView.Blackboard = blackboard;
     }
 
     private void ConstructGraphView()
     {
-        _graphView = new DilemmaGraphView
+        _graphView = new DilemmaGraphView(this)
         {
             name = "Dilemma Graph"
         };
@@ -49,17 +75,14 @@ public class DilemmaGraph : EditorWindow
         toolbar.Add(child: new Button(clickEvent: () => RequestDataOperation(save:true)) { text = "Save Data" });
         toolbar.Add(child: new Button(clickEvent: () => RequestDataOperation(save:false)) { text = "Load Data" });
 
-        var nodeCreateButton = new Button(clickEvent: () => { _graphView.CreateNode("Dilemma Node"); });
-        nodeCreateButton.text = "Create Node";
-        toolbar.Add(nodeCreateButton);
-
         rootVisualElement.Add(toolbar);
     }
 
     private void GenerateMiniMap()
     {
         var miniMap = new MiniMap{anchored = true};
-        miniMap.SetPosition(newPos: new Rect(x: 10, y: 30, width: 200, height: 140));
+        var cords = _graphView.contentViewContainer.WorldToLocal(p: new Vector2(x: this.maxSize.x - 10, y: 30));
+        miniMap.SetPosition(newPos: new Rect(cords.x, cords.y, width: 300, height: 240));
         _graphView.Add(miniMap);
     }
 
