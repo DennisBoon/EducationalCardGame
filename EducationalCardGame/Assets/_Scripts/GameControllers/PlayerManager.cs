@@ -13,6 +13,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks, Photon.Pun.IPunObservabl
     public Transform playerGlobal;
     public Transform playerLocal;
 
+    [HideInInspector]
+    public string role = "";
+
     private void Awake()
     {
         Debug.Log("PLAYER INSTANTIATED");

@@ -258,3 +258,4 @@ MonoBehaviour:
   avatar: {fileID: 3089458884479776512}
   playerGlobal: {fileID: 0}
   playerLocal: {fileID: 0}
+  role: 
