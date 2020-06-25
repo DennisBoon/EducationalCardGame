@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class RoleManager : MonoBehaviour
 {
     private RoleData roleData;
-
-    public GameObject photonViewObject;
+    [SerializeField]
+    private GameObject player;
 
     private const int size = 4;
     public Text[] roleNameTexts = new Text[size];
@@ -36,7 +36,7 @@ public class RoleManager : MonoBehaviour
     }
 
     private void Awake()
-    {
+    {     
         roleData = GetComponentInParent<RoleData>();
 
         for (int i = 0; i < roleNameTexts.Length; i++)
@@ -44,13 +44,17 @@ public class RoleManager : MonoBehaviour
             roleNameTexts[i].text = roleData.roleNames[i];
             playerNameTexts[i].text = roleData.playerNames[i];
         }
+
+        player = GameObject.Find("NetworkedPlayer");
     }
 
-    [PunRPC]
+    //[PunRPC]
     public void SelectRole(int roleNumber)
     {
-        photonViewObject.GetComponentInChildren<PlayerManager>().role = roleData.roleNames[roleNumber];
-        playerNameTexts[roleNumber].text = photonViewObject.GetComponentInChildren<PhotonView>().Owner.NickName;
+        //photonViewObject.GetComponentInChildren<PlayerManager>().role = roleData.roleNames[roleNumber];
+        //playerNameTexts[roleNumber].text = photonViewObject.GetComponentInChildren<PhotonView>().Owner.NickName;
+        player.GetComponent<PlayerManager>().role = roleData.roleNames[roleNumber];
+        playerNameTexts[roleNumber].text = player.GetComponent<PhotonView>().Owner.NickName;
         roleButtons[roleNumber].interactable = false;
     }
 }

@@ -20,9 +20,9 @@ public class StartSetup : MonoBehaviour
         Destroy(spawnPoints[spawnPicker].gameObject);
         spawnPoints.Remove(spawnPoints[spawnPicker]);
 
-        //canvas.transform.position = canvasSpawnPoints[spawnPicker].position;
-        //canvas.transform.rotation = canvasSpawnPoints[spawnPicker].rotation;
-        //Destroy(canvasSpawnPoints[spawnPicker].gameObject);
-        //canvasSpawnPoints.Remove(canvasSpawnPoints[spawnPicker]);
+        canvas.transform.position = canvasSpawnPoints[spawnPicker].position;
+        canvas.transform.rotation = canvasSpawnPoints[spawnPicker].rotation;
+        Destroy(canvasSpawnPoints[spawnPicker].gameObject);
+        canvasSpawnPoints.Remove(canvasSpawnPoints[spawnPicker]);
     }
 }
