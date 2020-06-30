@@ -15,13 +15,16 @@ public class StartSetup : MonoBehaviour
     {
         int spawnPicker = Random.Range(0, spawnPoints.Count);
 
-        this.transform.position = spawnPoints[spawnPicker].position;
-        this.transform.rotation = spawnPoints[spawnPicker].rotation;
+        // Spawnpoints index will temporarely be set to 0 for testing.
+        // And because for some reason the spawning sometimes does not work correctly...
+
+        this.transform.position = spawnPoints[0].position;
+        this.transform.rotation = spawnPoints[0].rotation;
         Destroy(spawnPoints[spawnPicker].gameObject);
         spawnPoints.Remove(spawnPoints[spawnPicker]);
 
-        canvas.transform.position = canvasSpawnPoints[spawnPicker].position;
-        canvas.transform.rotation = canvasSpawnPoints[spawnPicker].rotation;
+        canvas.transform.position = canvasSpawnPoints[0].position;
+        canvas.transform.rotation = canvasSpawnPoints[0].rotation;
         Destroy(canvasSpawnPoints[spawnPicker].gameObject);
         canvasSpawnPoints.Remove(canvasSpawnPoints[spawnPicker]);
     }

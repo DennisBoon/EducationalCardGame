@@ -8,8 +8,7 @@ using UnityEngine.UI;
 public class RoleManager : MonoBehaviour
 {
     private RoleData roleData;
-    [SerializeField]
-    private GameObject player;
+    public GameObject player;
 
     private const int size = 4;
     public Text[] roleNameTexts = new Text[size];
@@ -54,6 +53,8 @@ public class RoleManager : MonoBehaviour
         //photonViewObject.GetComponentInChildren<PlayerManager>().role = roleData.roleNames[roleNumber];
         //playerNameTexts[roleNumber].text = photonViewObject.GetComponentInChildren<PhotonView>().Owner.NickName;
         player.GetComponent<PlayerManager>().role = roleData.roleNames[roleNumber];
+        //player.GetComponent<PlayerManager>().role = roleData.roleNames[roleNumber];
+        //playerNameTexts[roleNumber].text = player.GetComponent<PhotonView>().Owner.NickName;
         playerNameTexts[roleNumber].text = player.GetComponent<PhotonView>().Owner.NickName;
         roleButtons[roleNumber].interactable = false;
     }
