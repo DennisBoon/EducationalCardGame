@@ -43,10 +43,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407575c88e3d1d04ca11a3f2113f9b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 3089458884748690298, guid: cca970800bceebe4594f987eedce520d,
+    type: 3}
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  playerPrefab: {fileID: 5897461442217488657, guid: 84812b35059d4d4419e1a550dd6b51ff,
-    type: 3}
+  canvasSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  canvas: {fileID: 0}
