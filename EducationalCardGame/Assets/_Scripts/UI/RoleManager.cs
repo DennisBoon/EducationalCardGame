@@ -8,7 +8,9 @@ using UnityEngine.UI;
 public class RoleManager : MonoBehaviour
 {
     private RoleData roleData;
+    [HideInInspector]
     public GameObject player;
+    public GameObject laserPointer;
 
     private const int size = 4;
     public Text[] roleNameTexts = new Text[size];
@@ -43,19 +45,25 @@ public class RoleManager : MonoBehaviour
             roleNameTexts[i].text = roleData.roleNames[i];
             playerNameTexts[i].text = roleData.playerNames[i];
         }
-
-        player = GameObject.Find("NetworkedPlayer");
     }
 
-    //[PunRPC]
     public void SelectRole(int roleNumber)
     {
-        //photonViewObject.GetComponentInChildren<PlayerManager>().role = roleData.roleNames[roleNumber];
-        //playerNameTexts[roleNumber].text = photonViewObject.GetComponentInChildren<PhotonView>().Owner.NickName;
         player.GetComponent<PlayerManager>().role = roleData.roleNames[roleNumber];
-        //player.GetComponent<PlayerManager>().role = roleData.roleNames[roleNumber];
-        //playerNameTexts[roleNumber].text = player.GetComponent<PhotonView>().Owner.NickName;
         playerNameTexts[roleNumber].text = player.GetComponent<PhotonView>().Owner.NickName;
         roleButtons[roleNumber].interactable = false;
+        laserPointer.SetActive(false);
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(true);
+        player.GetComponent<PhotonView>().RPC("RPC_SelectRole", RpcTarget.AllBuffered, roleNumber, 
+            playerNameTexts[roleNumber].text);
+    }
+
+    [PunRPC]
+    void RPC_SelectRole(int roleNumber, string playerName)
+    {
+        playerNameTexts[roleNumber].text = playerName;
+        roleButtons[roleNumber].interactable = false;
+        MPGameManager.Instance.CheckIfReady();
     }
 }

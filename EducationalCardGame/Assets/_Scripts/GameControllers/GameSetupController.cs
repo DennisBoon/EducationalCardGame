@@ -10,6 +10,8 @@ public class GameSetupController : MonoBehaviour
     [Tooltip("The prefab to use for representing the player")]
     public GameObject playerPrefab;
 
+    public GameObject playerParentObject;
+
     [SerializeField]
     private List<Transform> spawnPoints = new List<Transform>();
     [SerializeField]
@@ -21,6 +23,18 @@ public class GameSetupController : MonoBehaviour
     {
         Debug.Log("START GAME SETUP");
 
+        int spawnPicker = Random.Range(0, spawnPoints.Count);
+
+        playerParentObject.transform.position = spawnPoints[spawnPicker].position;
+        playerParentObject.transform.rotation = spawnPoints[spawnPicker].rotation;
+        Destroy(spawnPoints[spawnPicker].gameObject);
+        spawnPoints.Remove(spawnPoints[spawnPicker]);
+
+        canvas.transform.position = canvasSpawnPoints[spawnPicker].position;
+        canvas.transform.rotation = canvasSpawnPoints[spawnPicker].rotation;
+        Destroy(canvasSpawnPoints[spawnPicker].gameObject);
+        canvasSpawnPoints.Remove(canvasSpawnPoints[spawnPicker]);
+
         if (playerPrefab == null)
         {
             Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
@@ -30,7 +44,8 @@ public class GameSetupController : MonoBehaviour
             if (PlayerManager.LocalPlayerInstance == null)
             {
                 Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
-                PhotonNetwork.Instantiate("NetworkedPlayer", Vector3.zero, Quaternion.identity, 0);
+                GameObject playerObject = PhotonNetwork.Instantiate("NetworkedPlayer", Vector3.zero, Quaternion.identity, 0);
+                canvas.GetComponent<RoleManager>().player = playerObject;
             }
             else
             {
@@ -39,20 +54,5 @@ public class GameSetupController : MonoBehaviour
 
             Debug.Log("GAME SETUP COMPLETED");
         }
-
-        int spawnPicker = Random.Range(0, spawnPoints.Count);
-
-        // Spawnpoints index will temporarely be set to 0 for testing.
-        // And because for some reason the spawning sometimes does not work correctly...
-
-        this.transform.position = spawnPoints[0].position;
-        this.transform.rotation = spawnPoints[0].rotation;
-        Destroy(spawnPoints[spawnPicker].gameObject);
-        spawnPoints.Remove(spawnPoints[spawnPicker]);
-
-        canvas.transform.position = canvasSpawnPoints[0].position;
-        canvas.transform.rotation = canvasSpawnPoints[0].rotation;
-        Destroy(canvasSpawnPoints[spawnPicker].gameObject);
-        canvasSpawnPoints.Remove(canvasSpawnPoints[spawnPicker]);
     }
 }

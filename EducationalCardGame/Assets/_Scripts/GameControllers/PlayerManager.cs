@@ -30,8 +30,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, Photon.Pun.IPunObservabl
             this.transform.SetParent(playerLocal);
             this.transform.localPosition = Vector3.zero;
 
-            GameObject.Find("VRUIMP/Canvas").GetComponent<RoleManager>().player = this.gameObject;
-
             avatar.SetActive(false);
         }
         // #Critical
