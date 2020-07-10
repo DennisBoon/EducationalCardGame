@@ -12,6 +12,16 @@ public class CurrentTurnState : IState
     public void Enter()
     {
         Debug.Log("ENTERING CURRENT TURN STATE");
+        if (owner.firstTurn)
+        {
+            Debug.Log("This is the first turn");
+        }
+        else
+        {
+            owner.dilemmaManager.UpdateDilemmaText("");
+        }
+
+        owner.firstTurn = false;
     }
 
     // Method which activates when the Enter method has been run through.

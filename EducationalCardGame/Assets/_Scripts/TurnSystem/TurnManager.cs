@@ -9,8 +9,15 @@ public class TurnManager : MonoBehaviour
     // State Machine.
     StateMachine stateMachine = new StateMachine();
 
+    // Dilemma Manager.
+    public DilemmaManager dilemmaManager;
+
+    // Bool for checking if this is the first turn
+    [HideInInspector]
+    public bool firstTurn = true;
+
     // Sets the state to enter at the start of the game.
-    private void Start()
+    private void Awake()
     {
         stateMachine.ChangeState(new CurrentTurnState(this));
     }

@@ -11,6 +11,10 @@ public class MPGameManager : MonoBehaviour
     [HideInInspector]
     public int playersReady = 0;
 
+    public GameObject infoBoards;
+    public GameObject turnManager;
+    public GameObject roleManagerCanvas;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -30,6 +34,16 @@ public class MPGameManager : MonoBehaviour
         if (PhotonNetwork.CurrentRoom.PlayerCount == playersReady)
         {
             Debug.Log("Start the game!");
+            for (int i = 0; i < 4; i++)
+            {
+                infoBoards.transform.GetChild(i).gameObject.SetActive(true);
+            }
+            roleManagerCanvas.SetActive(false);
+            turnManager.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Waiting on other players...");
         }
     }
 }

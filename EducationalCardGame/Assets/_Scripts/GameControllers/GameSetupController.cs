@@ -11,29 +11,59 @@ public class GameSetupController : MonoBehaviour
     public GameObject playerPrefab;
 
     public GameObject playerParentObject;
+    public GameObject canvas;
+
+    //public GameObject gameCardOne;
+    //public GameObject gameCardTwo;
+
+    public List<GameObject> infoBoardsWithText = new List<GameObject>();
+    public List<GameObject> infoBoardsWithoutText = new List<GameObject>();
 
     [SerializeField]
     private List<Transform> spawnPoints = new List<Transform>();
     [SerializeField]
     private List<Transform> canvasSpawnPoints = new List<Transform>();
-
-    public GameObject canvas;
+    [SerializeField]
+    private List<Transform> infoBoardSpawnPoints = new List<Transform>();
+    //[SerializeField]
+    //private List<Transform> gameCardOneSpawnPoints = new List<Transform>();
+    //[SerializeField]
+    //private List<Transform> gameCardTwoSpawnPoints = new List<Transform>();
 
     private void Start()
     {
         Debug.Log("START GAME SETUP");
 
+        // Create an int to make sure all objects are set at the right position
         int spawnPicker = Random.Range(0, spawnPoints.Count);
 
+        // Set position and rotation for player object, remove spawn point object and listing afterwards
         playerParentObject.transform.position = spawnPoints[spawnPicker].position;
         playerParentObject.transform.rotation = spawnPoints[spawnPicker].rotation;
         Destroy(spawnPoints[spawnPicker].gameObject);
         spawnPoints.Remove(spawnPoints[spawnPicker]);
 
+        // Set position and rotation for canvas object, remove spawn point object and listing afterwards
         canvas.transform.position = canvasSpawnPoints[spawnPicker].position;
         canvas.transform.rotation = canvasSpawnPoints[spawnPicker].rotation;
         Destroy(canvasSpawnPoints[spawnPicker].gameObject);
         canvasSpawnPoints.Remove(canvasSpawnPoints[spawnPicker]);
+
+        // Set position and rotation for infoboard object, remove spawn point object and listing afterwards
+        foreach (GameObject boardWithText in infoBoardsWithText)
+        {
+            boardWithText.transform.position = infoBoardSpawnPoints[spawnPicker].position;
+            boardWithText.transform.rotation = infoBoardSpawnPoints[spawnPicker].rotation;
+        }
+
+        Destroy(infoBoardSpawnPoints[spawnPicker].gameObject);
+        infoBoardSpawnPoints.Remove(infoBoardSpawnPoints[spawnPicker]);
+
+        for (int i = 0; i < infoBoardSpawnPoints.Count; i++)
+        {
+            infoBoardsWithoutText[i].transform.position = infoBoardSpawnPoints[i].position;
+            infoBoardsWithoutText[i].transform.rotation = infoBoardSpawnPoints[i].rotation;
+        }
 
         if (playerPrefab == null)
         {

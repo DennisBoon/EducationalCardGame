@@ -10,7 +10,6 @@ public class RoleManager : MonoBehaviour
     private RoleData roleData;
     [HideInInspector]
     public GameObject player;
-    public GameObject laserPointer;
 
     private const int size = 4;
     public Text[] roleNameTexts = new Text[size];
@@ -52,10 +51,9 @@ public class RoleManager : MonoBehaviour
         player.GetComponent<PlayerManager>().role = roleData.roleNames[roleNumber];
         playerNameTexts[roleNumber].text = player.GetComponent<PhotonView>().Owner.NickName;
         roleButtons[roleNumber].interactable = false;
-        laserPointer.SetActive(false);
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
-        player.GetComponent<PhotonView>().RPC("RPC_SelectRole", RpcTarget.AllBuffered, roleNumber, 
+        this.GetComponent<PhotonView>().RPC("RPC_SelectRole", RpcTarget.AllBuffered, roleNumber, 
             playerNameTexts[roleNumber].text);
     }
 

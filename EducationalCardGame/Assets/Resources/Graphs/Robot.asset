@@ -41,6 +41,14 @@ MonoBehaviour:
       increase the military strength and defenses of the country by for example using
       combat robots for border patrol
     Position: {x: 1348, y: -27}
+  - Guid: f9d11587-6a16-47bd-a269-b1547b5a2b74
+    DilemmaText: After refusing the research of combat robot technology, a group
+      of ambitious engineers approached us with an idea. They would like to get access
+      to the robot technology because they wan't to create robots that could help
+      improve life as we know it. For example by creating autonomous cars, domestic
+      work robots, etcetera. They will however need financial support to make this
+      happen.
+    Position: {x: 2669, y: -2}
   - Guid: d5ac6d02-c6ad-4998-804f-3e8192a1e08f
     DilemmaText: After the development of combat robot technology had been concluded,
       multiple combat robots were deployed across the border to do border patrol.
@@ -50,15 +58,13 @@ MonoBehaviour:
       repairs, in the action history of the robot engineers found evidence that the
       robot had been treated violently which in the programming of the robot calls
       for immediate action in the form of gunfire.
-    Position: {x: 2610, y: -335}
-  - Guid: f9d11587-6a16-47bd-a269-b1547b5a2b74
-    DilemmaText: After refusing the research of combat robot technology, a group
-      of ambitious engineers approached us with an idea. They would like to get access
-      to the robot technology because they wan't to create robots that could help
-      improve life as we know it. For example by creating autonomous cars, domestic
-      work robots, etcetera. They will however need financial support to make this
-      happen.
-    Position: {x: 2616, y: -5}
+    Position: {x: 2647, y: -338}
   ExposedProperties:
-  - PropertyName: Test
+  - PropertyName: Resource 1
+    PropertyValue: 0
+  - PropertyName: Resource 2
+    PropertyValue: 0
+  - PropertyName: Resource 3
+    PropertyValue: 0
+  - PropertyName: Resource 4
     PropertyValue: 0

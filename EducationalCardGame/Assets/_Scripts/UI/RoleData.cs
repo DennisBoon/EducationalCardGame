@@ -10,6 +10,8 @@ public class RoleData : MonoBehaviour
     public string[] roleNames = new string[size];
     public string[] playerNames = new string[size];
 
+    public List<string> roleDescriptions = new List<string>();
+
     private void OnValidate()
     {
         if (roleNames.Length != size)
