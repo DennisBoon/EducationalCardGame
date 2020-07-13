@@ -23,6 +23,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class OVRGrabber : MonoBehaviour
 {
+    // EXTRAS ADDED SPECIFICALLY FOR THIS PROJECT
+    public GameObject handModel, infoBoard, infoBoardWithGap;
+
     // Grip trigger thresholds for picking up objects, with some hysteresis.
     public float grabBegin = 0.55f;
     public float grabEnd = 0.35f;
@@ -236,6 +239,11 @@ public class OVRGrabber : MonoBehaviour
 		OVRGrabbable closestGrabbable = null;
         Collider closestGrabbableCollider = null;
 
+        // EXTRA CODE FOR THE PROJECT
+        handModel.SetActive(false);
+        infoBoard.SetActive(false);
+        infoBoardWithGap.SetActive(true);
+
         // Iterate grab candidates and find the closest grabbable candidate
 		foreach (OVRGrabbable grabbable in m_grabCandidates.Keys)
         {
@@ -345,6 +353,11 @@ public class OVRGrabber : MonoBehaviour
 
     protected void GrabEnd()
     {
+        // EXTRA CODE FOR THE PROJECT
+        handModel.SetActive(true);
+        infoBoard.SetActive(true);
+        infoBoardWithGap.SetActive(false);
+
         if (m_grabbedObj != null)
         {
 			OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(m_controller), orientation = OVRInput.GetLocalControllerRotation(m_controller) };

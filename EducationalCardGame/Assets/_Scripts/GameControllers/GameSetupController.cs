@@ -13,8 +13,8 @@ public class GameSetupController : MonoBehaviour
     public GameObject playerParentObject;
     public GameObject canvas;
 
-    //public GameObject gameCardOne;
-    //public GameObject gameCardTwo;
+    public GameObject gameCardOne;
+    public GameObject gameCardTwo;
 
     public List<GameObject> infoBoardsWithText = new List<GameObject>();
     public List<GameObject> infoBoardsWithoutText = new List<GameObject>();
@@ -25,10 +25,10 @@ public class GameSetupController : MonoBehaviour
     private List<Transform> canvasSpawnPoints = new List<Transform>();
     [SerializeField]
     private List<Transform> infoBoardSpawnPoints = new List<Transform>();
-    //[SerializeField]
-    //private List<Transform> gameCardOneSpawnPoints = new List<Transform>();
-    //[SerializeField]
-    //private List<Transform> gameCardTwoSpawnPoints = new List<Transform>();
+    [SerializeField]
+    private List<Transform> gameCardOneSpawnPoints = new List<Transform>();
+    [SerializeField]
+    private List<Transform> gameCardTwoSpawnPoints = new List<Transform>();
 
     private void Start()
     {
@@ -58,6 +58,18 @@ public class GameSetupController : MonoBehaviour
 
         Destroy(infoBoardSpawnPoints[spawnPicker].gameObject);
         infoBoardSpawnPoints.Remove(infoBoardSpawnPoints[spawnPicker]);
+
+        // Set position and rotation for game card one object, remove spawn point object and listing afterwards
+        gameCardOne.transform.position = gameCardOneSpawnPoints[spawnPicker].position;
+        gameCardOne.transform.rotation = gameCardOneSpawnPoints[spawnPicker].rotation;
+        Destroy(gameCardOneSpawnPoints[spawnPicker].gameObject);
+        gameCardOneSpawnPoints.Remove(gameCardOneSpawnPoints[spawnPicker]);
+
+        // Set position and rotation for game card one object, remove spawn point object and listing afterwards
+        gameCardTwo.transform.position = gameCardTwoSpawnPoints[spawnPicker].position;
+        gameCardTwo.transform.rotation = gameCardTwoSpawnPoints[spawnPicker].rotation;
+        Destroy(gameCardTwoSpawnPoints[spawnPicker].gameObject);
+        gameCardTwoSpawnPoints.Remove(gameCardTwoSpawnPoints[spawnPicker]);
 
         for (int i = 0; i < infoBoardSpawnPoints.Count; i++)
         {

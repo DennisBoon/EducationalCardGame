@@ -7,27 +7,33 @@ public class DilemmaManager : MonoBehaviour
 {
     public Text dilemmaText, controlsText, resourcesText, scenarioText,
         roleDescriptionText, controlsTextGap, resourcesTextGap,
-        scenarioTextGap, roleDescriptionTextGap;
+        scenarioTextGap, roleDescriptionTextGap, gameCardOneText,
+        gameCardTwoText;
 
     public string controls, scenario;
 
     private string currentNode;
 
+    public GameSetupController gameSetupController;
     public DilemmaContainer dilemmaContainer;
 
     private void Awake()
     {
         currentNode = dilemmaContainer.DilemmaNodeData[0].Guid;
-        Debug.Log("STARTING NODE: " + currentNode);
-        int selectedNodeIndex = dilemmaContainer.DilemmaNodeData.IndexOf(new DilemmaNodeData { Guid = currentNode }) + 1;
-        Debug.Log("INDEX OF CURRENTLY SELECTED NODE: " + selectedNodeIndex);
-        UpdateDilemmaText(dilemmaContainer.DilemmaNodeData[selectedNodeIndex].DilemmaText);
-        UpdateResourcesText();
+
+        controlsText.text = controls;
+        controlsTextGap.text = controls;
+
+        scenarioText.text = scenario;
+        scenarioTextGap.text = scenario;
     }
 
-    public void UpdateDilemmaText(string dilemma)
+    public void UpdateDilemma()
     {
-        dilemmaText.text = dilemma;
+        int selectedNodeIndex = dilemmaContainer.DilemmaNodeData.IndexOf(new DilemmaNodeData { Guid = currentNode }) + 1;
+        dilemmaText.text = dilemmaContainer.DilemmaNodeData[selectedNodeIndex].DilemmaText;
+        UpdateCards();
+        UpdateResourcesText();
     }
 
     public void UpdateResourcesText()
@@ -36,6 +42,17 @@ public class DilemmaManager : MonoBehaviour
         dilemmaContainer.ExposedProperties[1].PropertyName + ": " + dilemmaContainer.ExposedProperties[1].PropertyValue + "\n" +
         dilemmaContainer.ExposedProperties[2].PropertyName + ": " + dilemmaContainer.ExposedProperties[2].PropertyValue + "\t" +
         dilemmaContainer.ExposedProperties[3].PropertyName + ": " + dilemmaContainer.ExposedProperties[3].PropertyValue;
+        resourcesTextGap.text = resourcesText.text;
+    }
+
+    public void UpdateCards()
+    {
+        gameSetupController.gameCardOne.SetActive(true);
+        gameSetupController.gameCardTwo.SetActive(true);
+        int firstOptionIndex = dilemmaContainer.NodeLinks.IndexOf(new NodeLinkData { BaseNodeGuid = currentNode }) + 2;
+        int secondOptionIndex = dilemmaContainer.NodeLinks.IndexOf(new NodeLinkData { BaseNodeGuid = currentNode }) + 3;
+        gameCardOneText.text = dilemmaContainer.NodeLinks[firstOptionIndex].PortName;
+        gameCardTwoText.text = dilemmaContainer.NodeLinks[secondOptionIndex].PortName;
     }
 
     public void MoveNode(string targetNodeGuid)
