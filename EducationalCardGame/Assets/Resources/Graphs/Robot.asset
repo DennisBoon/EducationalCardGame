@@ -15,40 +15,59 @@ MonoBehaviour:
   NodeLinks:
   - BaseNodeGuid: 617542a2-ba43-4932-8f8a-d655bcd50050
     PortName: Next
+    CardImageName: 
     TargetNodeGuid: 1272d06c-7753-4db4-9800-fa7c99fba4e4
+  - BaseNodeGuid: d5ac6d02-c6ad-4998-804f-3e8192a1e08f
+    PortName: Share the details found by the engineers and give an apology in which
+      you promise to stop using combat robot technology for border patrol.
+    CardImageName: Robot
+    TargetNodeGuid: 453025d9-b4fc-4e83-ac46-113c79a9e297
+  - BaseNodeGuid: d5ac6d02-c6ad-4998-804f-3e8192a1e08f
+    PortName: Apologize for what happened but don't share the details given by the
+      engineers, instead say that there was a software issue with one of the robots
+      that has been taken care of so it won't happen again.
+    CardImageName: Combat Robot
+    TargetNodeGuid: eca7bc24-1845-4531-bd8c-d5fcbb6551ec
   - BaseNodeGuid: 1272d06c-7753-4db4-9800-fa7c99fba4e4
     PortName: Invest in new robot technology.
+    CardImageName: Robot
     TargetNodeGuid: 36c4f16c-a1c6-4ed1-98e9-b352adb84e70
   - BaseNodeGuid: 1272d06c-7753-4db4-9800-fa7c99fba4e4
     PortName: Don't invest in new robot technology.
+    CardImageName: Robot
     TargetNodeGuid: 9d6a4e49-e4cf-4a76-a46d-0a15e7d9c8e3
   - BaseNodeGuid: 36c4f16c-a1c6-4ed1-98e9-b352adb84e70
     PortName: Invest in combat robot technology.
+    CardImageName: Combat Robot
     TargetNodeGuid: d5ac6d02-c6ad-4998-804f-3e8192a1e08f
   - BaseNodeGuid: 36c4f16c-a1c6-4ed1-98e9-b352adb84e70
     PortName: Don't invest in combat robot technology.
+    CardImageName: Combat Robot
     TargetNodeGuid: f9d11587-6a16-47bd-a269-b1547b5a2b74
+  - BaseNodeGuid: f9d11587-6a16-47bd-a269-b1547b5a2b74
+    PortName: Choice 1
+    CardImageName: Combat Robot
+    TargetNodeGuid: c23a4fc0-fb48-4628-9a47-2bb0df151e16
+  - BaseNodeGuid: f9d11587-6a16-47bd-a269-b1547b5a2b74
+    PortName: Choice 2
+    CardImageName: Robot
+    TargetNodeGuid: 985ea8fe-dede-407a-a3a1-bf9a260d08a7
   DilemmaNodeData:
-  - Guid: 1272d06c-7753-4db4-9800-fa7c99fba4e4
-    DilemmaText: 'Researchers have developed a new robot technology with which, among
-      other things, autonomous cars can be developed. '
-    Position: {x: 329, y: 203}
   - Guid: 9d6a4e49-e4cf-4a76-a46d-0a15e7d9c8e3
-    DilemmaText: Dilemma Node
-    Position: {x: 1339, y: 413}
-  - Guid: 36c4f16c-a1c6-4ed1-98e9-b352adb84e70
-    DilemmaText: The military wants to continue the robot technology research to
-      increase the military strength and defenses of the country by for example using
-      combat robots for border patrol
-    Position: {x: 1348, y: -27}
-  - Guid: f9d11587-6a16-47bd-a269-b1547b5a2b74
-    DilemmaText: After refusing the research of combat robot technology, a group
-      of ambitious engineers approached us with an idea. They would like to get access
-      to the robot technology because they wan't to create robots that could help
-      improve life as we know it. For example by creating autonomous cars, domestic
-      work robots, etcetera. They will however need financial support to make this
-      happen.
-    Position: {x: 2669, y: -2}
+    DilemmaText: 'ENDING: Test'
+    Position: {x: 1324, y: 398}
+  - Guid: 985ea8fe-dede-407a-a3a1-bf9a260d08a7
+    DilemmaText: 'ENDING: Test'
+    Position: {x: 5548, y: 245}
+  - Guid: c23a4fc0-fb48-4628-9a47-2bb0df151e16
+    DilemmaText: 'ENDING: Test'
+    Position: {x: 5686, y: -123}
+  - Guid: 453025d9-b4fc-4e83-ac46-113c79a9e297
+    DilemmaText: 'ENDING: Test'
+    Position: {x: 6799, y: -528}
+  - Guid: eca7bc24-1845-4531-bd8c-d5fcbb6551ec
+    DilemmaText: 'ENDING: Test'
+    Position: {x: 6790, y: -96}
   - Guid: d5ac6d02-c6ad-4998-804f-3e8192a1e08f
     DilemmaText: After the development of combat robot technology had been concluded,
       multiple combat robots were deployed across the border to do border patrol.
@@ -59,6 +78,23 @@ MonoBehaviour:
       robot had been treated violently which in the programming of the robot calls
       for immediate action in the form of gunfire.
     Position: {x: 2647, y: -338}
+  - Guid: 1272d06c-7753-4db4-9800-fa7c99fba4e4
+    DilemmaText: Researchers have developed a new robot technology with which, among
+      other things, autonomous cars can be developed.
+    Position: {x: 329, y: 203}
+  - Guid: f9d11587-6a16-47bd-a269-b1547b5a2b74
+    DilemmaText: After refusing the research of combat robot technology, a group
+      of ambitious engineers approached us with an idea. They would like to get access
+      to the robot technology because they wan't to create robots that could help
+      improve life as we know it. For example by creating autonomous cars, domestic
+      work robots, etcetera. They will however need financial support to make this
+      happen.
+    Position: {x: 2669, y: -2}
+  - Guid: 36c4f16c-a1c6-4ed1-98e9-b352adb84e70
+    DilemmaText: The military wants to continue the robot technology research to
+      increase the military strength and defenses of the country by for example using
+      combat robots for border patrol.
+    Position: {x: 1348, y: -27}
   ExposedProperties:
   - PropertyName: Resource 1
     PropertyValue: 0

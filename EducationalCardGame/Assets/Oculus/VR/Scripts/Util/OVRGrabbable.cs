@@ -38,9 +38,8 @@ public class OVRGrabbable : MonoBehaviour
     protected OVRGrabber m_grabbedBy = null;
 
     // Added to be able to set a grabbed object back to it's start position and rotation when dropped.
-    [SerializeField]
     [Tooltip("Set to true to reset object transform when dropped")]
-    private bool resetTransform;
+    public bool resetTransform;
 
     private Vector3 startPosition;
     private Quaternion startRotation;
@@ -146,8 +145,18 @@ public class OVRGrabbable : MonoBehaviour
         }
     }
 
+    public void ResetTransform()
+    {
+        this.transform.position = startPosition;
+        this.transform.rotation = startRotation;
+    }
+
     void Awake()
     {
+        // Added to set start position and rotation.
+        startPosition = this.transform.position;
+        startRotation = this.transform.rotation;
+
         if (m_grabPoints.Length == 0)
         {
             // Get the collider from the grabbable
@@ -165,10 +174,6 @@ public class OVRGrabbable : MonoBehaviour
     protected virtual void Start()
     {
         m_grabbedKinematic = GetComponent<Rigidbody>().isKinematic;
-
-        // Added to set start position and rotation.
-        startPosition = this.transform.position;
-        startRotation = this.transform.rotation;
     }
 
     void OnDestroy()

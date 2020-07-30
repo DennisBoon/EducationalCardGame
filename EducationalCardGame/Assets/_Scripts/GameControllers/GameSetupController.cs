@@ -12,11 +12,11 @@ public class GameSetupController : MonoBehaviour
 
     public GameObject playerParentObject;
     public GameObject canvas;
+    public GameObject endingCanvas;
 
-    public GameObject gameCardOne;
-    public GameObject gameCardTwo;
+    public List<GameObject> gameCards;
 
-    public List<GameObject> infoBoardsWithText = new List<GameObject>();
+    public GameObject infoBoardWithText;
     public List<GameObject> infoBoardsWithoutText = new List<GameObject>();
 
     [SerializeField]
@@ -29,6 +29,13 @@ public class GameSetupController : MonoBehaviour
     private List<Transform> gameCardOneSpawnPoints = new List<Transform>();
     [SerializeField]
     private List<Transform> gameCardTwoSpawnPoints = new List<Transform>();
+    [SerializeField]
+    private List<Transform> gameCardThreeSpawnPoints = new List<Transform>();
+    [SerializeField]
+    private List<Transform> gameCardFourSpawnPoints = new List<Transform>();
+
+    //[HideInInspector]
+    //public List<Transform> cardSpawnPositions = new List<Transform>();
 
     private void Start()
     {
@@ -49,27 +56,48 @@ public class GameSetupController : MonoBehaviour
         Destroy(canvasSpawnPoints[spawnPicker].gameObject);
         canvasSpawnPoints.Remove(canvasSpawnPoints[spawnPicker]);
 
-        // Set position and rotation for infoboard object, remove spawn point object and listing afterwards
-        foreach (GameObject boardWithText in infoBoardsWithText)
-        {
-            boardWithText.transform.position = infoBoardSpawnPoints[spawnPicker].position;
-            boardWithText.transform.rotation = infoBoardSpawnPoints[spawnPicker].rotation;
-        }
+        // Set position and rotation for ending canvas object
+        endingCanvas.transform.position = canvas.transform.position;
+        endingCanvas.transform.rotation = canvas.transform.rotation;
 
+        // Set position and rotation for infoboard object, remove spawn point object and listing afterwards
+        infoBoardWithText.transform.position = infoBoardSpawnPoints[spawnPicker].position;
+        infoBoardWithText.transform.rotation = infoBoardSpawnPoints[spawnPicker].rotation;
         Destroy(infoBoardSpawnPoints[spawnPicker].gameObject);
         infoBoardSpawnPoints.Remove(infoBoardSpawnPoints[spawnPicker]);
 
         // Set position and rotation for game card one object, remove spawn point object and listing afterwards
-        gameCardOne.transform.position = gameCardOneSpawnPoints[spawnPicker].position;
-        gameCardOne.transform.rotation = gameCardOneSpawnPoints[spawnPicker].rotation;
+        gameCards[0].transform.position = gameCardOneSpawnPoints[spawnPicker].position;
+        gameCards[0].transform.rotation = gameCardOneSpawnPoints[spawnPicker].rotation;
+        //cardSpawnPositions.Add(gameCardOneSpawnPoints[spawnPicker]);
         Destroy(gameCardOneSpawnPoints[spawnPicker].gameObject);
         gameCardOneSpawnPoints.Remove(gameCardOneSpawnPoints[spawnPicker]);
 
-        // Set position and rotation for game card one object, remove spawn point object and listing afterwards
-        gameCardTwo.transform.position = gameCardTwoSpawnPoints[spawnPicker].position;
-        gameCardTwo.transform.rotation = gameCardTwoSpawnPoints[spawnPicker].rotation;
+        // Set position and rotation for game card two object, remove spawn point object and listing afterwards
+        gameCards[1].transform.position = gameCardTwoSpawnPoints[spawnPicker].position;
+        gameCards[1].transform.rotation = gameCardTwoSpawnPoints[spawnPicker].rotation;
+        //cardSpawnPositions.Add(gameCardTwoSpawnPoints[spawnPicker]);
         Destroy(gameCardTwoSpawnPoints[spawnPicker].gameObject);
         gameCardTwoSpawnPoints.Remove(gameCardTwoSpawnPoints[spawnPicker]);
+
+        // Set position and rotation for game card three object, remove spawn point object and listing afterwards
+        gameCards[2].transform.position = gameCardThreeSpawnPoints[spawnPicker].position;
+        gameCards[2].transform.rotation = gameCardThreeSpawnPoints[spawnPicker].rotation;
+        //cardSpawnPositions.Add(gameCardThreeSpawnPoints[spawnPicker]);
+        Destroy(gameCardThreeSpawnPoints[spawnPicker].gameObject);
+        gameCardThreeSpawnPoints.Remove(gameCardThreeSpawnPoints[spawnPicker]);
+
+        // Set position and rotation for game card four object, remove spawn point object and listing afterwards
+        gameCards[3].transform.position = gameCardFourSpawnPoints[spawnPicker].position;
+        gameCards[3].transform.rotation = gameCardFourSpawnPoints[spawnPicker].rotation;
+        //cardSpawnPositions.Add(gameCardFourSpawnPoints[spawnPicker]);
+        Destroy(gameCardFourSpawnPoints[spawnPicker].gameObject);
+        gameCardFourSpawnPoints.Remove(gameCardFourSpawnPoints[spawnPicker]);
+
+        foreach(GameObject card in gameCards)
+        {
+            card.SetActive(false);
+        }
 
         for (int i = 0; i < infoBoardSpawnPoints.Count; i++)
         {

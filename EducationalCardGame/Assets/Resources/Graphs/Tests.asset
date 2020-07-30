@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a1c4a168dabe140823911114058459, type: 3}
+  m_Name: Tests
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGuid: 02e8e238-f130-428e-a13d-6dc2a0e7dba7
+    PortName: Next
+    CardImageName: 
+    TargetNodeGuid: 4ddadc73-acbd-46c0-a870-fa91126e6b75
+  - BaseNodeGuid: 4ddadc73-acbd-46c0-a870-fa91126e6b75
+    PortName: B
+    CardImageName: A
+    TargetNodeGuid: fb7ace1f-4349-472e-8b6a-20bc5e1d4935
+  - BaseNodeGuid: 4ddadc73-acbd-46c0-a870-fa91126e6b75
+    PortName: D
+    CardImageName: C
+    TargetNodeGuid: 7cee4bec-9d72-4948-9045-b344fc5ac5a6
+  DilemmaNodeData:
+  - Guid: fb7ace1f-4349-472e-8b6a-20bc5e1d4935
+    DilemmaText: Dilemma Node
+    Position: {x: 808, y: 175}
+  - Guid: 7cee4bec-9d72-4948-9045-b344fc5ac5a6
+    DilemmaText: Dilemma Node
+    Position: {x: 817, y: 375}
+  - Guid: 4ddadc73-acbd-46c0-a870-fa91126e6b75
+    DilemmaText: Dilemma Node
+    Position: {x: 339, y: 204}
+  ExposedProperties: []

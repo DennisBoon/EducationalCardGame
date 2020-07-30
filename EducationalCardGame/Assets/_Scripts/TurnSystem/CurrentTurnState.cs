@@ -11,6 +11,7 @@ public class CurrentTurnState : IState
     // Method which activates when the state is entered.
     public void Enter()
     {
+        Debug.Log("ENTERING CURRENT TURN STATE");
         owner.dilemmaManager.UpdateDilemma();
     }
 

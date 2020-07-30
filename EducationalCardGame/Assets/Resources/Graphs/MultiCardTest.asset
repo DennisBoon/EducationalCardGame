@@ -1,0 +1,253 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a1c4a168dabe140823911114058459, type: 3}
+  m_Name: MultiCardTest
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGuid: c8f691e3-f73a-4389-b742-a081499c3ee9
+    PortName: Next
+    CardImageName: 
+    ResourceUpName: 
+    ResourceDownName: 
+    TargetNodeGuid: 0e4a5ea3-f014-49fb-b926-dbf25195c5ba
+  - BaseNodeGuid: 0d193636-88b9-4ab0-9153-bfde84b2cf13
+    PortName: F
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 3
+    ResourceDownName: Resource 2
+    TargetNodeGuid: 93e520ee-995e-434a-843f-d92fc8517f01
+  - BaseNodeGuid: 0d193636-88b9-4ab0-9153-bfde84b2cf13
+    PortName: G
+    CardImageName: Robot
+    ResourceUpName: Resource 1
+    ResourceDownName: 
+    TargetNodeGuid: 52aeeefb-34ff-44fd-aa27-9b26ab605a99
+  - BaseNodeGuid: 0d193636-88b9-4ab0-9153-bfde84b2cf13
+    PortName: H
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 3
+    ResourceDownName: Resource 1
+    TargetNodeGuid: ffabf0ca-d216-4c7b-8244-0fbcf66909f8
+  - BaseNodeGuid: d63e4401-06f8-4674-8814-a9324b53cc96
+    PortName: C
+    CardImageName: Robot
+    ResourceUpName: Resource 3
+    ResourceDownName: 
+    TargetNodeGuid: a1589788-da5b-4956-b64c-78462e818d72
+  - BaseNodeGuid: d63e4401-06f8-4674-8814-a9324b53cc96
+    PortName: D
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 4
+    ResourceDownName: Resource 2
+    TargetNodeGuid: 8592d818-d6af-46cf-8591-bbedc168cfc2
+  - BaseNodeGuid: d63e4401-06f8-4674-8814-a9324b53cc96
+    PortName: E
+    CardImageName: Robot
+    ResourceUpName: Resource 2
+    ResourceDownName: Resource 1
+    TargetNodeGuid: 6f9bf9ff-d4a4-4e61-a13a-07aa409d8284
+  - BaseNodeGuid: ffabf0ca-d216-4c7b-8244-0fbcf66909f8
+    PortName: CC
+    CardImageName: Robot
+    ResourceUpName: Resource 4
+    ResourceDownName: Resource 3
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: ffabf0ca-d216-4c7b-8244-0fbcf66909f8
+    PortName: DD
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 3
+    ResourceDownName: Resource 4
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: ffabf0ca-d216-4c7b-8244-0fbcf66909f8
+    PortName: EE
+    CardImageName: Robot
+    ResourceUpName: Resource Up 3
+    ResourceDownName: Resource 3
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: ffabf0ca-d216-4c7b-8244-0fbcf66909f8
+    PortName: FF
+    CardImageName: Combat Robot
+    ResourceUpName: Resource Up 4
+    ResourceDownName: Resource 3
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 8592d818-d6af-46cf-8591-bbedc168cfc2
+    PortName: M
+    CardImageName: Robot
+    ResourceUpName: Resource 3
+    ResourceDownName: Resource 1
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 8592d818-d6af-46cf-8591-bbedc168cfc2
+    PortName: N
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 4
+    ResourceDownName: 
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 8592d818-d6af-46cf-8591-bbedc168cfc2
+    PortName: O
+    CardImageName: Robot
+    ResourceUpName: Resource 1
+    ResourceDownName: Resource 3
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 8592d818-d6af-46cf-8591-bbedc168cfc2
+    PortName: P
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 1
+    ResourceDownName: Resource 3
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 6f9bf9ff-d4a4-4e61-a13a-07aa409d8284
+    PortName: Q
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 4
+    ResourceDownName: Resource 1
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 6f9bf9ff-d4a4-4e61-a13a-07aa409d8284
+    PortName: R
+    CardImageName: Robot
+    ResourceUpName: Resource 3
+    ResourceDownName: Resource 2
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 6f9bf9ff-d4a4-4e61-a13a-07aa409d8284
+    PortName: S
+    CardImageName: Combat Robot
+    ResourceUpName: 
+    ResourceDownName: Resource 3
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 6f9bf9ff-d4a4-4e61-a13a-07aa409d8284
+    PortName: T
+    CardImageName: Robot
+    ResourceUpName: Resource 4
+    ResourceDownName: Resource 1
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: a1589788-da5b-4956-b64c-78462e818d72
+    PortName: I
+    CardImageName: Robot
+    ResourceUpName: Resource 2
+    ResourceDownName: Resource 1
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: a1589788-da5b-4956-b64c-78462e818d72
+    PortName: J
+    CardImageName: Combat Robot
+    ResourceUpName: 
+    ResourceDownName: Resource 1
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: a1589788-da5b-4956-b64c-78462e818d72
+    PortName: K
+    CardImageName: Robot
+    ResourceUpName: Resource 1
+    ResourceDownName: Resource 2
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: a1589788-da5b-4956-b64c-78462e818d72
+    PortName: L
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 2
+    ResourceDownName: Resource 1
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 93e520ee-995e-434a-843f-d92fc8517f01
+    PortName: U
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 4
+    ResourceDownName: Resource 1
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 93e520ee-995e-434a-843f-d92fc8517f01
+    PortName: V
+    CardImageName: Robot
+    ResourceUpName: Resource 3
+    ResourceDownName: Resource 2
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 93e520ee-995e-434a-843f-d92fc8517f01
+    PortName: W
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 1
+    ResourceDownName: 
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 93e520ee-995e-434a-843f-d92fc8517f01
+    PortName: X
+    CardImageName: Robot
+    ResourceUpName: Resource 2
+    ResourceDownName: Resource 1
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 52aeeefb-34ff-44fd-aa27-9b26ab605a99
+    PortName: Y
+    CardImageName: Robot
+    ResourceUpName: Resource 4
+    ResourceDownName: Resource 1
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 52aeeefb-34ff-44fd-aa27-9b26ab605a99
+    PortName: Z
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 4
+    ResourceDownName: Resource 3
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 52aeeefb-34ff-44fd-aa27-9b26ab605a99
+    PortName: AA
+    CardImageName: Robot
+    ResourceUpName: 
+    ResourceDownName: Resource 2
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 52aeeefb-34ff-44fd-aa27-9b26ab605a99
+    PortName: BB
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 3
+    ResourceDownName: Resource 1
+    TargetNodeGuid: ad8b9d26-52e3-4294-986d-314129b64a0a
+  - BaseNodeGuid: 0e4a5ea3-f014-49fb-b926-dbf25195c5ba
+    PortName: A
+    CardImageName: Robot
+    ResourceUpName: Resource 1
+    ResourceDownName: Resource 3
+    TargetNodeGuid: d63e4401-06f8-4674-8814-a9324b53cc96
+  - BaseNodeGuid: 0e4a5ea3-f014-49fb-b926-dbf25195c5ba
+    PortName: B
+    CardImageName: Combat Robot
+    ResourceUpName: Resource 2
+    ResourceDownName: Resource 4
+    TargetNodeGuid: 0d193636-88b9-4ab0-9153-bfde84b2cf13
+  DilemmaNodeData:
+  - Guid: 0d193636-88b9-4ab0-9153-bfde84b2cf13
+    DilemmaText: TEST DILEMMA 3
+    Position: {x: 801, y: 409}
+  - Guid: ffabf0ca-d216-4c7b-8244-0fbcf66909f8
+    DilemmaText: TEST DILEMMA 8
+    Position: {x: 1336, y: 677}
+  - Guid: 8592d818-d6af-46cf-8591-bbedc168cfc2
+    DilemmaText: TEST DILEMMA 4
+    Position: {x: 1329, y: -32}
+  - Guid: a1589788-da5b-4956-b64c-78462e818d72
+    DilemmaText: TEST DILEMMA 3
+    Position: {x: 1329, y: -207}
+  - Guid: ad8b9d26-52e3-4294-986d-314129b64a0a
+    DilemmaText: 'ENDING: TEST ENDING'
+    Position: {x: 1847, y: 261}
+  - Guid: 52aeeefb-34ff-44fd-aa27-9b26ab605a99
+    DilemmaText: TEST DILEMMA 7
+    Position: {x: 1337, y: 500}
+  - Guid: 0e4a5ea3-f014-49fb-b926-dbf25195c5ba
+    DilemmaText: TEST DILEMMA 1
+    Position: {x: 314, y: 198}
+  - Guid: d63e4401-06f8-4674-8814-a9324b53cc96
+    DilemmaText: TEST DILEMMA 2
+    Position: {x: 800, y: 55}
+  - Guid: 93e520ee-995e-434a-843f-d92fc8517f01
+    DilemmaText: TEST DILEMMA 6
+    Position: {x: 1333, y: 324}
+  - Guid: 6f9bf9ff-d4a4-4e61-a13a-07aa409d8284
+    DilemmaText: TEST DILEMMA 5
+    Position: {x: 1333, y: 144}
+  ExposedProperties:
+  - PropertyName: Resource 1
+    PropertyValue: 0
+  - PropertyName: Resource 2
+    PropertyValue: 0
+  - PropertyName: Resource 3
+    PropertyValue: 0
+  - PropertyName: Resource 4
+    PropertyValue: 0

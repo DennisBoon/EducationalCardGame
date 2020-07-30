@@ -48,10 +48,33 @@ public class GraphSaveUtility
             var outputNode = connectedPorts[i].output.node as DilemmaNode;
             var inputNode = connectedPorts[i].input.node as DilemmaNode;
 
+            Debug.Log(((DilemmaNode)connectedPorts[i].output.node).GUID);
+            Debug.Log(connectedPorts[i].output.contentContainer.childCount);
+
+            string ResourceUpName = "";
+            string ResourceDownName = "";
+
+            foreach(VisualElement visualElement in connectedPorts[i].output.contentContainer.Children().Where(x => x.name == "choiceResourceUpName"))
+            {
+                Debug.Log(visualElement.name);
+                Debug.Log(((TextField)visualElement).value);
+                ResourceUpName = ((TextField)visualElement).value;
+            }
+    
+            foreach(VisualElement visualElement in connectedPorts[i].output.contentContainer.Children().Where(x => x.name == "choiceResourceDownName"))
+            {
+                Debug.Log(visualElement.name);
+                Debug.Log(((TextField) visualElement).value);
+                ResourceDownName = ((TextField) visualElement).value;
+            }
+
             dilemmaContainer.NodeLinks.Add(item: new NodeLinkData
             {
                 BaseNodeGuid = outputNode.GUID,
                 PortName = connectedPorts[i].output.portName,
+                CardImageName = connectedPorts[i].output.name,
+                ResourceUpName = ResourceUpName,
+                ResourceDownName = ResourceDownName,
                 TargetNodeGuid = inputNode.GUID
             });
         }
@@ -141,7 +164,7 @@ public class GraphSaveUtility
             _targetGraphView.AddElement(tempNode);
 
             var nodePorts = _containerCache.NodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
-            nodePorts.ForEach(x => _targetGraphView.AddChoicePort(tempNode, x.PortName));
+            nodePorts.ForEach(x => _targetGraphView.AddChoicePort(tempNode, x.PortName, x.CardImageName, x.ResourceUpName, x.ResourceDownName));
         }
     }
 

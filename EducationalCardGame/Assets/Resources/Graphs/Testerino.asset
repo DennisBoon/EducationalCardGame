@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a1c4a168dabe140823911114058459, type: 3}
+  m_Name: Testerino
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGuid: 67e58140-5a7f-4a78-ad28-fd85a89fb100
+    PortName: Next
+    CardImageName: 
+    TargetNodeGuid: b7e71bcc-0f7f-4aaa-9ea6-4a211d5f42b0
+  - BaseNodeGuid: b7e71bcc-0f7f-4aaa-9ea6-4a211d5f42b0
+    PortName: Choice 1
+    CardImageName: Robot
+    TargetNodeGuid: bc699c60-714e-44ec-9bc7-c89b4c93d4bb
+  - BaseNodeGuid: b7e71bcc-0f7f-4aaa-9ea6-4a211d5f42b0
+    PortName: Choice 2
+    CardImageName: Combat Robot
+    TargetNodeGuid: bc699c60-714e-44ec-9bc7-c89b4c93d4bb
+  - BaseNodeGuid: b7e71bcc-0f7f-4aaa-9ea6-4a211d5f42b0
+    PortName: Choice 3
+    CardImageName: Combat Robot
+    TargetNodeGuid: bc699c60-714e-44ec-9bc7-c89b4c93d4bb
+  - BaseNodeGuid: b7e71bcc-0f7f-4aaa-9ea6-4a211d5f42b0
+    PortName: Choice 4
+    CardImageName: Robot
+    TargetNodeGuid: bc699c60-714e-44ec-9bc7-c89b4c93d4bb
+  - BaseNodeGuid: bc699c60-714e-44ec-9bc7-c89b4c93d4bb
+    PortName: Choice 1
+    CardImageName: Robot
+    TargetNodeGuid: 9780b977-db95-4818-95d1-3db5ffd00029
+  - BaseNodeGuid: bc699c60-714e-44ec-9bc7-c89b4c93d4bb
+    PortName: Choice 2
+    CardImageName: Combat Robot
+    TargetNodeGuid: 9780b977-db95-4818-95d1-3db5ffd00029
+  DilemmaNodeData:
+  - Guid: b7e71bcc-0f7f-4aaa-9ea6-4a211d5f42b0
+    DilemmaText: Dogshit
+    Position: {x: 349, y: 211}
+  - Guid: 9780b977-db95-4818-95d1-3db5ffd00029
+    DilemmaText: 'ENDING: Bla'
+    Position: {x: 1181, y: 261}
+  - Guid: bc699c60-714e-44ec-9bc7-c89b4c93d4bb
+    DilemmaText: Dilemma Node
+    Position: {x: 819, y: 251}
+  ExposedProperties:
+  - PropertyName: New String
+    PropertyValue: New Value
+  - PropertyName: New String(1)
+    PropertyValue: New Value
+  - PropertyName: New String(1)(1)
+    PropertyValue: New Value
+  - PropertyName: New String(1)(1)(1)
+    PropertyValue: New Value

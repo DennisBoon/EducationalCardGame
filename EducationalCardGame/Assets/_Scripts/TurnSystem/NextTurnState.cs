@@ -12,16 +12,19 @@ public class NextTurnState : IState
     public void Enter()
     {
         Debug.Log("ENTERING NEXT TURN STATE");
+        /**
+         * In this state there is room for placing objects in the scenery based on decisions
+         * made by the players. For example if players decide to invest in robot technology
+         * after the turn has ended these robots could be instantiated in the scene for the
+         * players to see.
+         */
+        owner.BeginTurn();
     }
 
     // Method which activates when the Enter method has been run through.
     public void Execute()
     {
-        // Temporary way to return to CurrentTurnState
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-           owner.BeginTurn();
-        }
+
     }
 
     // Method which activates when the state is exited.

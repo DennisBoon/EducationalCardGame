@@ -41,6 +41,13 @@ MonoBehaviour:
   - PickRoleOnClick
   - SelectRole
   - RPC_SelectRole
+  - ConfirmCard
+  - RPC_ConfirmCard
+  - RPC_StartGame
+  - RPC_FinishTurn
+  - RPC_EndGame
+  - RPC_ReplayGame
+  - RPC_RemoveRoom
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

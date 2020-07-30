@@ -122,7 +122,8 @@ public class DilemmaGraphView : GraphView
         return dilemmaNode;
     }
 
-    public void AddChoicePort(DilemmaNode dilemmaNode, string overriddenPortName = "")
+    public void AddChoicePort(DilemmaNode dilemmaNode, string overriddenPortName = "", string overriddenCardImageName = "", 
+        string overriddenResourceUpName = "", string overriddenResourceDownName = "")
     {
         var generatedPort = GeneratePort(dilemmaNode, Direction.Output);
 
@@ -135,13 +136,48 @@ public class DilemmaGraphView : GraphView
             ? $"Choice {outputPortCount + 1}"
             : overriddenPortName;
 
+        var choiceCardImageName = string.IsNullOrEmpty(overriddenCardImageName)
+            ? $"Image {outputPortCount + 1}"
+            : overriddenCardImageName;
+
+        var choiceResourceUpName = string.IsNullOrEmpty(overriddenResourceUpName)
+            ? $"Resource Up {outputPortCount + 1}"
+            : overriddenResourceUpName;
+
+        var choiceResourceDownName = string.IsNullOrEmpty(overriddenResourceDownName)
+            ? $"Resource Down {outputPortCount + 1}"
+            : overriddenResourceDownName;
+
         var textField = new TextField
         {
             name = string.Empty,
             value = choicePortName
         };
+
+        var textCardImageField = new TextField
+        {
+            name = string.Empty,
+            value = choiceCardImageName
+        };
+
+        var textResourceUpField = new TextField
+        {
+            name = "choiceResourceUpName",
+            value = choiceResourceUpName
+        };
+
+        var textResourceDownField = new TextField
+        {
+            name = "choiceResourceDownName",
+            value = choiceResourceDownName
+        };
+
         textField.RegisterCallback((EventCallback<ChangeEvent<string>>)(evt => generatedPort.portName = evt.newValue));
+        textCardImageField.RegisterCallback((EventCallback<ChangeEvent<string>>)(evt => generatedPort.name = evt.newValue));
         generatedPort.contentContainer.Add(child: new Label(text: "  "));
+        generatedPort.contentContainer.Add(textResourceDownField);
+        generatedPort.contentContainer.Add(textResourceUpField);
+        generatedPort.contentContainer.Add(textCardImageField);
         generatedPort.contentContainer.Add(textField);
         var deleteButton = new Button(clickEvent: () => RemovePort(dilemmaNode, generatedPort))
         {
@@ -150,6 +186,7 @@ public class DilemmaGraphView : GraphView
         generatedPort.contentContainer.Add(deleteButton);
 
         generatedPort.portName = choicePortName;
+        generatedPort.name = choiceCardImageName;
         dilemmaNode.outputContainer.Add(generatedPort);
         dilemmaNode.RefreshPorts();
         dilemmaNode.RefreshExpandedState();
@@ -157,7 +194,8 @@ public class DilemmaGraphView : GraphView
 
     private void RemovePort(DilemmaNode dilemmaNode, Port generatedPort)
     {
-        var targetEdge = edges.ToList().Where(x => x.output.portName == generatedPort.portName && x.output.node == generatedPort.node);
+        var targetEdge = edges.ToList().Where(x => x.output.portName == generatedPort.portName && x.output.node == generatedPort.node 
+        && x.output.name == generatedPort.name);
 
         if (targetEdge.Any()) return;
         var edge = targetEdge.First();
@@ -193,9 +231,9 @@ public class DilemmaGraphView : GraphView
 
         var propertyValueTextField = new TextField(label: "Value:")
         {
-            value = localPropertyValue
+            value = localPropertyValue.ToString()
         };
-        propertyValueTextField.RegisterCallback((EventCallback<ChangeEvent<string>>)(evt =>
+        propertyValueTextField.RegisterCallback((EventCallback<ChangeEvent<int>>)(evt =>
         {
             var changingPropertyIndex = ExposedProperties.FindIndex(match: x => x.PropertyName == property.PropertyName);
             ExposedProperties[changingPropertyIndex].PropertyValue = evt.newValue;
