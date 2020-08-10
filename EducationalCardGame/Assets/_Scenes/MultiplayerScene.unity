@@ -9889,6 +9889,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VRUI_MP
       objectReference: {fileID: 0}
+    - target: {fileID: 935016974925715992, guid: e4853b036335b9c4d83fc0e0c773fb3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 955089164620283907, guid: e4853b036335b9c4d83fc0e0c773fb3c,
         type: 3}
       propertyPath: rayTransform

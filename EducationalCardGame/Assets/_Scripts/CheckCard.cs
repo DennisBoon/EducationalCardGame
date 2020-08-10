@@ -120,6 +120,7 @@ public class CheckCard : MonoBehaviour
             MPGameManager.Instance.optionVotes[3]++;
         }
 
+        MPGameManager.Instance.playersReady++;
         MPGameManager.Instance.CheckIfVoted();
     }
 }

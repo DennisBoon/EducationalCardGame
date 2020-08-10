@@ -63,8 +63,6 @@ public class MPGameManager : MonoBehaviour
 
     public void CheckIfVoted()
     {
-        playersReady++;
-
         if (PhotonNetwork.CurrentRoom.PlayerCount == playersReady)
         {
             this.GetComponent<PhotonView>().RPC("RPC_FinishTurn", RpcTarget.AllBuffered);
